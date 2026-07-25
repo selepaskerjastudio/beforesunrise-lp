@@ -10,7 +10,20 @@ Imported from the Claude Design project *Before Sunrise\* App* — variant **1b 
 ## Files
 
 - `index.html` — the whole page. No build step, no JS, one external request (Google Fonts).
+- `og-image.html` — source for the social card (1200×630 layout, app mockup on the right).
+- `og.jpg` — rendered social card, 2400×1260, referenced by `og:image` / `twitter:image`.
 - `.nojekyll` — tells GitHub Pages to serve files as-is.
+
+### Regenerating og.jpg
+
+Edit `og-image.html`, then:
+
+```bash
+"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless --disable-gpu \
+  --hide-scrollbars --window-size=1200,630 --force-device-scale-factor=2 \
+  --virtual-time-budget=10000 --screenshot=og.png "file://$PWD/og-image.html"
+sips -s format jpeg -s formatOptions 82 og.png --out og.jpg && rm og.png
+```
 
 ## Deploy
 
@@ -40,5 +53,6 @@ All CTAs link to the app at <https://app.beforesunrise.id>.
 
 ## TODO
 
-- Add an OG image (`og:image`) — none in the design yet.
-- Set `og:url` / canonical once the final landing domain is decided.
+- If the landing moves to a custom domain, update `og:url`, `og:image`,
+  `twitter:image`, and `<link rel="canonical">` in `index.html` — Open Graph
+  requires absolute URLs.

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<title>Before Sunrise* — OG image source</title>
+<!--
+  Source for og.png. Rendered at 1200x630 with:
+  "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless \
+    --screenshot=og.png --window-size=1200,630 --force-device-scale-factor=2 \
+    --hide-scrollbars --virtual-time-budget=10000 file://$PWD/og-image.html
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #FFFBF7;
+    --ink: #17120E;
+    --flame: #F0451F;
+    --gold: #FFC56B;
+    --shadow-card: 0 4px 14px rgba(120, 90, 40, .05);
+    --phone-scale: .615;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    width: 1200px; height: 630px; overflow: hidden;
+    font-family: 'Hanken Grotesk', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    background: linear-gradient(150deg, #2A2350 0%, #7A3B5E 42%, #E66A3C 78%, #FFB257 100%);
+  }
+
+  .card { position: relative; width: 1200px; height: 630px; overflow: hidden; display: flex; align-items: center; }
+  .star { position: absolute; background: #fff; border-radius: 50%; }
+  .s1 { top: 78px; left: 96px; width: 4px; height: 4px; opacity: .85; }
+  .s2 { top: 150px; left: 300px; width: 3px; height: 3px; opacity: .55; }
+  .s3 { top: 250px; left: 130px; width: 2.5px; height: 2.5px; opacity: .4; }
+  .s4 { top: 96px; left: 520px; width: 3px; height: 3px; opacity: .6; }
+  .glow {
+    position: absolute; right: -80px; bottom: -220px;
+    width: 620px; height: 620px; border-radius: 50%;
+    background: radial-gradient(circle at 50% 40%, rgba(255,197,107,.55), rgba(240,69,31,.18) 55%, rgba(42,35,80,0) 72%);
+  }
+
+  .copy { position: relative; width: 640px; padding: 0 0 0 72px; display: flex; flex-direction: column; gap: 22px; }
+  .logo { font-weight: 800; font-size: 26px; letter-spacing: -.03em; color: #fff; }
+  .logo span { color: var(--gold); }
+  .kicker {
+    font-size: 16px; font-weight: 700; letter-spacing: .18em;
+    text-transform: uppercase; color: rgba(255, 255, 255, .78);
+  }
+  h1 {
+    margin: 0; font-weight: 800; font-size: 62px; line-height: 1.03;
+    letter-spacing: -.04em; color: #fff;
+  }
+  .lede { margin: 0; font-size: 23px; line-height: 1.5; font-weight: 500; color: rgba(255, 255, 255, .88); }
+  .note {
+    display: inline-flex; align-items: center; align-self: flex-start; gap: 10px;
+    font-size: 18px; font-weight: 600; color: rgba(255, 255, 255, .92);
+    background: rgba(255, 255, 255, .12); border: 1px solid rgba(255, 255, 255, .3);
+    border-radius: 999px; padding: 10px 18px;
+  }
+
+  /* phone — same 402x858 screen as the landing page, scaled and cropped */
+  .phone { position: absolute; right: 78px; top: 74px; }
+  .phone-frame {
+    padding: 12px 12px 0; border-radius: 46px 46px 0 0;
+    background: #0E0B09; box-shadow: 0 40px 90px -30px rgba(20, 10, 0, .75);
+  }
+  .phone-crop {
+    width: calc(402px * var(--phone-scale));
+    height: calc(880px * var(--phone-scale));
+    overflow: hidden; border-radius: 34px 34px 0 0; background: var(--cream);
+  }
+  .phone-screen {
+    width: 402px; height: 858px; position: relative;
+    background: var(--cream); overflow: hidden;
+    transform: scale(var(--phone-scale)); transform-origin: top left;
+  }
+
+  .status { height: 50px; display: flex; align-items: center; justify-content: space-between; padding: 14px 32px 0; }
+  .status-time { font-weight: 700; font-size: 15px; color: var(--ink); }
+  .status-right { display: flex; align-items: center; gap: 7px; }
+  .bars { display: flex; align-items: flex-end; gap: 2px; height: 11px; }
+  .bars i { width: 3px; background: var(--ink); border-radius: 1px; }
+  .bars i:nth-child(1) { height: 5px } .bars i:nth-child(2) { height: 7px }
+  .bars i:nth-child(3) { height: 9px } .bars i:nth-child(4) { height: 11px }
+  .battery { width: 25px; height: 12px; border: 1.6px solid var(--ink); border-radius: 3px; display: flex; align-items: center; padding: 1.5px; }
+  .battery i { height: 100%; width: 78%; background: var(--ink); border-radius: 1.5px; display: block; }
+
+  .app { padding: 6px 22px 0; }
+  .app-head { display: flex; align-items: center; justify-content: space-between; margin: 8px 0 22px; }
+  .app-hi { font-size: 14px; color: #9C948A; font-weight: 600; margin-bottom: 2px; }
+  .app-name { font-size: 30px; font-weight: 800; color: var(--ink); letter-spacing: -.7px; line-height: 1; }
+  .avatar {
+    width: 50px; height: 50px; border-radius: 50%;
+    background: linear-gradient(150deg, var(--gold), var(--flame));
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; font-weight: 800; font-size: 17px;
+    box-shadow: 0 8px 18px -6px rgba(240, 69, 31, .6);
+  }
+  .dow, .dates { display: flex; justify-content: space-between; }
+  .dow { margin-bottom: 8px; padding: 0 2px; }
+  .dow span { flex: 1; text-align: center; font-size: 12px; font-weight: 600; color: #A79E94; }
+  .dates { gap: 6px; margin-bottom: 28px; }
+  .dates span {
+    flex: 1; aspect-ratio: 1; border-radius: 50%; background: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; font-weight: 700; color: #4B463F;
+    box-shadow: 0 2px 6px rgba(120, 90, 40, .06);
+  }
+  .dates span.on {
+    background: var(--flame); color: #fff; font-weight: 800;
+    box-shadow: 0 8px 16px -6px rgba(240, 69, 31, .7);
+  }
+
+  .promo {
+    position: relative; border-radius: 28px; overflow: hidden;
+    background: linear-gradient(120deg, #FFCB73 0%, #FFB257 55%, #EF8A3E 100%);
+    padding: 24px; margin-bottom: 30px; min-height: 132px;
+    display: flex; align-items: center;
+    box-shadow: 0 16px 34px -20px rgba(180, 120, 20, .55);
+  }
+  .promo-txt { position: relative; z-index: 1; max-width: 60%; }
+  .promo-txt b { display: block; font-size: 23px; font-weight: 800; color: #3A2A06; letter-spacing: -.4px; line-height: 1.1; }
+  .promo-txt small { display: block; font-size: 13px; font-weight: 500; color: #7A5B0F; line-height: 1.35; margin-top: 7px; }
+  .promo-art { position: absolute; right: -4px; bottom: 0; width: 198px; height: 120px; z-index: 0; }
+  .promo-art svg { position: absolute; bottom: 0; right: 0; width: 100%; display: block; }
+
+  .score { display: flex; align-items: center; gap: 16px; background: var(--ink); border-radius: 24px; padding: 18px 20px; margin-bottom: 30px; }
+  .ring { position: relative; width: 60px; height: 60px; flex: none; }
+  .ring-val { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 800; color: #fff; }
+  .score-main { flex: 1; }
+  .score-main b { display: block; font-size: 15px; font-weight: 700; color: #fff; line-height: 1.2; }
+  .score-main small { display: block; font-size: 12.5px; color: #A79E94; font-weight: 500; margin-top: 3px; }
+  .score-pts { text-align: right; }
+  .score-pts b { display: block; font-size: 24px; font-weight: 800; color: var(--flame); line-height: 1; }
+  .score-pts small { font-size: 11px; color: #A79E94; font-weight: 600; }
+
+  .group { margin-bottom: 26px; }
+  .group-head { display: flex; align-items: center; gap: 10px; margin-bottom: 13px; padding: 0 2px; }
+  .group-ico { width: 30px; height: 30px; border-radius: 10px; background: #F1EBE2; display: flex; align-items: center; justify-content: center; color: var(--ink); }
+  .group-head b { font-size: 16px; font-weight: 800; color: var(--ink); letter-spacing: -.3px; }
+  .group-head small { margin-left: auto; font-size: 12px; font-weight: 700; color: #B0A89E; }
+  .tasks { display: flex; flex-direction: column; gap: 10px; }
+  .task { position: relative; display: flex; align-items: center; gap: 13px; background: #fff; border-radius: 20px; padding: 14px 15px; box-shadow: var(--shadow-card); }
+  .task.done::before { content: ""; position: absolute; inset: 0; border-radius: 20px; background: rgba(240, 69, 31, .08); border: 1.6px solid rgba(240, 69, 31, .55); }
+  .task-ico { width: 42px; height: 42px; border-radius: 13px; background: #F1EBE2; flex: none; display: flex; align-items: center; justify-content: center; color: var(--ink); z-index: 1; }
+  .task-body { flex: 1; z-index: 1; }
+  .task-body b { display: block; font-size: 15px; font-weight: 600; color: var(--ink); line-height: 1.25; }
+  .task-body small { display: block; font-size: 12px; color: #9C948A; font-weight: 500; margin-top: 2px; }
+  .check { flex: none; width: 28px; height: 28px; border-radius: 50%; border: 2px solid #E5DDD3; z-index: 1; }
+  .check.on { border: none; background: var(--flame); display: flex; align-items: center; justify-content: center; }
+</style>
+</head>
+<body>
+<div class="card">
+  <i class="star s1"></i><i class="star s2"></i><i class="star s3"></i><i class="star s4"></i>
+  <div class="glow"></div>
+
+  <div class="copy">
+    <div class="logo">Before Sunrise<span>*</span></div>
+    <div class="kicker">Habit-tracker amalan harian</div>
+    <h1>Mulai harimu sebelum matahari terbit.</h1>
+    <p class="lede">Buka, centang, tutup. Kurang dari 15 detik untuk menjaga ritme pagimu.</p>
+    <div class="note">Gratis · tanpa iklan · jalan di HP apa pun</div>
+  </div>
+
+  <div class="phone">
+    <div class="phone-frame">
+      <div class="phone-crop">
+        <div class="phone-screen">
+
+          <div class="status">
+            <span class="status-time">5:12</span>
+            <div class="status-right">
+              <div class="bars"><i></i><i></i><i></i><i></i></div>
+              <svg width="16" height="12" viewBox="0 0 16 12" fill="none"><path d="M1 4.2C4.8 1 11.2 1 15 4.2" stroke="#17120E" stroke-width="1.6" stroke-linecap="round"></path><path d="M3.5 6.8C6 4.6 10 4.6 12.5 6.8" stroke="#17120E" stroke-width="1.6" stroke-linecap="round"></path><circle cx="8" cy="10" r="1.3" fill="#17120E"></circle></svg>
+              <div class="battery"><i></i></div>
+            </div>
+          </div>
+
+          <div class="app">
+            <div class="app-head">
+              <div>
+                <div class="app-hi">Assalamualaikum,</div>
+                <div class="app-name">Tika</div>
+              </div>
+              <div class="avatar">T</div>
+            </div>
+
+            <div class="dow"><span>S</span><span>S</span><span>R</span><span>K</span><span>J</span><span>S</span><span>M</span></div>
+            <div class="dates"><span>15</span><span>16</span><span>17</span><span>18</span><span class="on">19</span><span>20</span><span>21</span></div>
+
+            <div class="promo">
+              <div class="promo-txt">
+                <b>Mulai harimu</b>
+                <small>Awali dengan amalan subuh yang khusyuk &amp; tenang.</small>
+              </div>
+              <div class="promo-art">
+                <svg viewBox="0 0 280 120">
+                  <ellipse cx="48" cy="40" rx="20" ry="7" fill="#FFFFFF" opacity=".7"></ellipse>
+                  <ellipse cx="232" cy="30" rx="16" ry="6" fill="#FFFFFF" opacity=".6"></ellipse>
+                  <g transform="translate(140 56)">
+                    <g stroke="#F58A1E" stroke-width="3.4" stroke-linecap="round">
+                      <line x1="0" y1="-34" x2="0" y2="-44"></line><line x1="0" y1="34" x2="0" y2="44"></line>
+                      <line x1="-34" y1="0" x2="-44" y2="0"></line><line x1="34" y1="0" x2="44" y2="0"></line>
+                      <line x1="-24" y1="-24" x2="-31" y2="-31"></line><line x1="24" y1="24" x2="31" y2="31"></line>
+                      <line x1="24" y1="-24" x2="31" y2="-31"></line><line x1="-24" y1="24" x2="-31" y2="31"></line>
+                    </g>
+                    <circle r="27" fill="#FB8C1E"></circle>
+                    <circle cx="-9" cy="-3" r="2.6" fill="#3A2206"></circle><circle cx="9" cy="-3" r="2.6" fill="#3A2206"></circle>
+                    <path d="M-8 7q8 7 16 0" stroke="#3A2206" stroke-width="2.4" fill="none" stroke-linecap="round"></path>
+                    <circle cx="-15" cy="5" r="3.4" fill="#FFB36B" opacity=".7"></circle><circle cx="15" cy="5" r="3.4" fill="#FFB36B" opacity=".7"></circle>
+                  </g>
+                  <path d="M0 120V92q34-26 70-14t72-2 68-16 70 12v48z" fill="#7BA64A"></path>
+                  <path d="M0 120V104q40-18 82-6t78-4 60-14 60 10v30z" fill="#5E8F37"></path>
+                  <path d="M40 96l8-18 8 18z" fill="#4C7A2C"></path><path d="M52 100l10-22 10 22z" fill="#3F6B23"></path>
+                  <path d="M214 98l9-20 9 20z" fill="#4C7A2C"></path>
+                </svg>
+              </div>
+            </div>
+
+            <div class="score">
+              <div class="ring">
+                <svg width="60" height="60" viewBox="0 0 60 60"><circle cx="30" cy="30" r="25" fill="none" stroke="#3A352E" stroke-width="7"></circle><circle cx="30" cy="30" r="25" fill="none" stroke="#F0451F" stroke-width="7" stroke-linecap="round" stroke-dasharray="157" stroke-dashoffset="39" transform="rotate(-90 30 30)"></circle></svg>
+                <div class="ring-val">75%</div>
+              </div>
+              <div class="score-main">
+                <b>6 dari 8 amalan</b>
+                <small>Tinggal sedikit lagi, semangat!</small>
+              </div>
+              <div class="score-pts">
+                <b>42</b>
+                <small>poin</small>
+              </div>
+            </div>
+
+            <div class="group">
+              <div class="group-head">
+                <div class="group-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20 13.5A8 8 0 119.2 3.2a6.5 6.5 0 1010.8 10.3z"></path></svg></div>
+                <b>Sholat</b>
+                <small>2/3</small>
+              </div>
+              <div class="tasks">
+                <div class="task done">
+                  <div class="task-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20 13.5A8 8 0 119.2 3.2a6.5 6.5 0 1010.8 10.3z"></path></svg></div>
+                  <div class="task-body"><b>Subuh berjamaah</b><small>05:12 · 15 poin</small></div>
+                  <div class="check on"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.2 4.2L19 7" stroke="#fff" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+                </div>
+                <div class="task">
+                  <div class="task-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20 13.5A8 8 0 119.2 3.2a6.5 6.5 0 1010.8 10.3z"></path></svg></div>
+                  <div class="task-body"><b>Qobliah subuh</b><small>2 rakaat · 10 poin</small></div>
+                  <div class="check"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="group">
+              <div class="group-head">
+                <div class="group-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 6.5C10.5 5 8 4.5 4 4.8V18c4-.3 6.5.2 8 1.7M12 6.5C13.5 5 16 4.5 20 4.8V18c-4-.3-6.5.2-8 1.7M12 6.5v13"></path></svg></div>
+                <b>Qur'an</b>
+                <small>1/2</small>
+              </div>
+              <div class="task">
+                <div class="task-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 6.5C10.5 5 8 4.5 4 4.8V18c4-.3 6.5.2 8 1.7M12 6.5C13.5 5 16 4.5 20 4.8V18c-4-.3-6.5.2-8 1.7M12 6.5v13"></path></svg></div>
+                <div class="task-body"><b>Tilawah 1 halaman</b><small>Harian · 10 poin</small></div>
+                <div class="check"></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

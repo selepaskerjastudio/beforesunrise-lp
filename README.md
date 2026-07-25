@@ -1,11 +1,15 @@
 # Before Sunrise* — Landing
 
-Static landing page for **Before Sunrise\***, a daily-amalan habit tracker PWA.
+Static landing page for **Before Sunrise\*** — a community that keeps each other
+company waking up for subuh, with a daily-amalan app alongside it.
 
 Imported from the Claude Design project *Before Sunrise\* App* — variant **1b "Fajar"**
 (`Before Sunrise Landing.dc.html`). The design-canvas runtime (`x-dc`, `sc-if`,
 `support.js`) is stripped; all conditional blocks (`heroPhone`, `showTestimoni`,
 `showFaq`) are rendered unconditionally.
+
+Copy tracks the design file. When 1b changes upstream, re-read it and re-apply —
+the section order, palette, and phone mockup have been stable; the copy is what moves.
 
 ## Files
 

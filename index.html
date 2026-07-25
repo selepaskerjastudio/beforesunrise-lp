@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Before Sunrise* — Habit-tracker amalan harian</title>
+<meta name="description" content="Buka, centang, tutup. Kurang dari 15 detik untuk menjaga ritme pagimu bersama komunitas. Gratis, tanpa iklan, jalan di HP apa pun.">
+<meta name="theme-color" content="#17120E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2317120E'/%3E%3Ctext x='32' y='50' font-family='sans-serif' font-size='52' font-weight='800' text-anchor='middle' fill='%23F0451F'%3E*%3C/text%3E%3C/svg%3E">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Before Sunrise* — Habit-tracker amalan harian">
+<meta property="og:description" content="Mulai harimu sebelum matahari terbit. Buka, centang, tutup.">
+<meta property="og:locale" content="id_ID">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --sand: #F6F1EA;
+    --cream: #FFFBF7;
+    --ink: #17120E;
+    --ink-2: #1C1A17;
+    --ink-soft: #4D473F;
+    --muted: #857C72;
+    --line: #EFE7DC;
+    --flame: #F0451F;
+    --gold: #FFC56B;
+    --hero: linear-gradient(170deg, #2A2350 0%, #7A3B5E 42%, #E66A3C 78%, #FFB257 100%);
+    --shadow-card: 0 4px 14px rgba(120, 90, 40, .05);
+    --radius: 22px;
+    --pad: 22px;
+    --phone-scale: .62;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  html, body { margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Hanken Grotesk', system-ui, -apple-system, sans-serif;
+    background: var(--sand);
+    color: var(--ink-2);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  a { color: var(--flame); text-decoration: none; }
+  a:hover { color: #C9391A; }
+  ::selection { background: var(--flame); color: #fff; }
+  img, svg { max-width: 100%; }
+
+  @keyframes bsTwinkle { 0%, 100% { opacity: .2 } 50% { opacity: .9 } }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { animation: none !important; transition: none !important; }
+  }
+
+  .wrap { width: 100%; max-width: 1120px; margin: 0 auto; padding: 0 var(--pad); }
+  .narrow { max-width: 860px; }
+
+  .eyebrow {
+    font-size: 13px; font-weight: 700; letter-spacing: .2em;
+    text-transform: uppercase; color: var(--flame);
+  }
+  h2 {
+    margin: 14px 0 24px;
+    font-weight: 800; font-size: clamp(27px, 5.2vw, 40px);
+    letter-spacing: -.025em; line-height: 1.15; text-wrap: pretty;
+  }
+  p { text-wrap: pretty; }
+
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    height: 58px; padding: 0 26px; border-radius: 18px; border: none;
+    font-family: inherit; font-size: 19px; font-weight: 700;
+    cursor: pointer; text-align: center;
+  }
+  .btn-light {
+    background: var(--cream); color: var(--ink);
+    box-shadow: 0 14px 30px -12px rgba(0, 0, 0, .5);
+  }
+  .btn-light:hover { color: var(--ink); background: #fff; }
+  .btn-ghost {
+    background: rgba(255, 255, 255, .10); color: #fff;
+    border: 1px solid rgba(255, 255, 255, .42);
+  }
+  .btn-ghost:hover { color: #fff; background: rgba(255, 255, 255, .18); }
+
+  /* ---------------------------------------------------------- hero */
+  .hero { position: relative; background: var(--hero); overflow: hidden; }
+  .star {
+    position: absolute; background: #fff; border-radius: 50%;
+    animation: bsTwinkle 2.6s infinite;
+  }
+  .star.a { top: 64px; left: 8%; width: 3px; height: 3px; }
+  .star.b { top: 110px; right: 14%; width: 2.5px; height: 2.5px; animation-duration: 3.2s; animation-delay: .6s; }
+  .star.c { top: 190px; left: 26%; width: 2px; height: 2px; animation-duration: 4s; animation-delay: 1.1s; }
+
+  .nav {
+    position: relative;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 24px 0 0;
+  }
+  .logo { font-weight: 800; font-size: 20px; letter-spacing: -.03em; color: #fff; }
+  .logo span { color: var(--gold); }
+  .nav a { font-size: 16px; font-weight: 600; color: rgba(255, 255, 255, .82); }
+  .nav a:hover { color: #fff; }
+
+  .hero-grid { position: relative; }
+  .hero-copy { padding: 40px 0 34px; display: flex; flex-direction: column; gap: 20px; }
+  .hero-kicker {
+    font-size: 13px; font-weight: 700; letter-spacing: .18em;
+    text-transform: uppercase; color: rgba(255, 255, 255, .78);
+  }
+  .hero-copy h1 {
+    margin: 0; font-weight: 800;
+    font-size: clamp(38px, 7.6vw, 62px);
+    line-height: 1.04; letter-spacing: -.04em; color: #fff;
+  }
+  .hero-copy .lede {
+    margin: 0; font-size: clamp(18px, 2.2vw, 21px); line-height: 1.6;
+    font-weight: 500; color: rgba(255, 255, 255, .88);
+  }
+  .hero-cta { display: flex; flex-direction: column; gap: 12px; margin-top: 4px; }
+  .hero-note { font-size: 16px; font-weight: 500; color: rgba(255, 255, 255, .75); }
+
+  /* phone mockup — 402x858 screen, cropped so it peeks above the fold */
+  .phone { position: relative; display: flex; justify-content: center; }
+  .phone-crop {
+    width: calc(402px * var(--phone-scale));
+    height: calc(600px * var(--phone-scale));
+    overflow: hidden;
+    border-radius: 36px 36px 0 0;
+    background: var(--cream);
+    box-shadow: 0 -6px 40px rgba(0, 0, 0, .3);
+  }
+  .phone-screen {
+    width: 402px; height: 858px; position: relative;
+    background: var(--cream); overflow: hidden;
+    transform: scale(var(--phone-scale)); transform-origin: top left;
+  }
+
+  .status { height: 50px; display: flex; align-items: center; justify-content: space-between; padding: 14px 32px 0; }
+  .status-time { font-weight: 700; font-size: 15px; color: var(--ink); }
+  .status-right { display: flex; align-items: center; gap: 7px; }
+  .bars { display: flex; align-items: flex-end; gap: 2px; height: 11px; }
+  .bars i { width: 3px; background: var(--ink); border-radius: 1px; }
+  .bars i:nth-child(1) { height: 5px } .bars i:nth-child(2) { height: 7px }
+  .bars i:nth-child(3) { height: 9px } .bars i:nth-child(4) { height: 11px }
+  .battery { width: 25px; height: 12px; border: 1.6px solid var(--ink); border-radius: 3px; display: flex; align-items: center; padding: 1.5px; }
+  .battery i { height: 100%; width: 78%; background: var(--ink); border-radius: 1.5px; display: block; }
+
+  .app { padding: 6px 22px 0; }
+  .app-head { display: flex; align-items: center; justify-content: space-between; margin: 8px 0 22px; }
+  .app-hi { font-size: 14px; color: #9C948A; font-weight: 600; margin-bottom: 2px; }
+  .app-name { font-size: 30px; font-weight: 800; color: var(--ink); letter-spacing: -.7px; line-height: 1; }
+  .avatar {
+    width: 50px; height: 50px; border-radius: 50%;
+    background: linear-gradient(150deg, var(--gold), var(--flame));
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; font-weight: 800; font-size: 17px;
+    box-shadow: 0 8px 18px -6px rgba(240, 69, 31, .6);
+  }
+  .dow, .dates { display: flex; justify-content: space-between; }
+  .dow { margin-bottom: 8px; padding: 0 2px; }
+  .dow span { flex: 1; text-align: center; font-size: 12px; font-weight: 600; color: #A79E94; }
+  .dates { gap: 6px; margin-bottom: 28px; }
+  .dates span {
+    flex: 1; aspect-ratio: 1; border-radius: 50%; background: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; font-weight: 700; color: #4B463F;
+    box-shadow: 0 2px 6px rgba(120, 90, 40, .06);
+  }
+  .dates span.on {
+    background: var(--flame); color: #fff; font-weight: 800;
+    box-shadow: 0 8px 16px -6px rgba(240, 69, 31, .7);
+  }
+
+  .promo {
+    position: relative; border-radius: 28px; overflow: hidden;
+    background: linear-gradient(120deg, #FFCB73 0%, #FFB257 55%, #EF8A3E 100%);
+    padding: 24px; margin-bottom: 30px; min-height: 132px;
+    display: flex; align-items: center;
+    box-shadow: 0 16px 34px -20px rgba(180, 120, 20, .55);
+  }
+  .promo-txt { position: relative; z-index: 1; max-width: 60%; }
+  .promo-txt b { display: block; font-size: 23px; font-weight: 800; color: #3A2A06; letter-spacing: -.4px; line-height: 1.1; }
+  .promo-txt small { display: block; font-size: 13px; font-weight: 500; color: #7A5B0F; line-height: 1.35; margin-top: 7px; }
+  .promo-art { position: absolute; right: -4px; bottom: 0; width: 198px; height: 120px; z-index: 0; }
+  .promo-art svg { position: absolute; bottom: 0; right: 0; width: 100%; display: block; }
+
+  .score { display: flex; align-items: center; gap: 16px; background: var(--ink); border-radius: 24px; padding: 18px 20px; margin-bottom: 30px; }
+  .ring { position: relative; width: 60px; height: 60px; flex: none; }
+  .ring-val { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 800; color: #fff; }
+  .score-main { flex: 1; }
+  .score-main b { display: block; font-size: 15px; font-weight: 700; color: #fff; line-height: 1.2; }
+  .score-main small { display: block; font-size: 12.5px; color: #A79E94; font-weight: 500; margin-top: 3px; }
+  .score-pts { text-align: right; }
+  .score-pts b { display: block; font-size: 24px; font-weight: 800; color: var(--flame); line-height: 1; }
+  .score-pts small { font-size: 11px; color: #A79E94; font-weight: 600; }
+
+  .group { margin-bottom: 26px; }
+  .group:last-child { margin-bottom: 0; }
+  .group-head { display: flex; align-items: center; gap: 10px; margin-bottom: 13px; padding: 0 2px; }
+  .group-ico {
+    width: 30px; height: 30px; border-radius: 10px; background: #F1EBE2;
+    display: flex; align-items: center; justify-content: center; color: var(--ink);
+  }
+  .group-head b { font-size: 16px; font-weight: 800; color: var(--ink); letter-spacing: -.3px; }
+  .group-head small { margin-left: auto; font-size: 12px; font-weight: 700; color: #B0A89E; }
+  .tasks { display: flex; flex-direction: column; gap: 10px; }
+  .task {
+    position: relative; display: flex; align-items: center; gap: 13px;
+    background: #fff; border-radius: 20px; padding: 14px 15px; box-shadow: var(--shadow-card);
+  }
+  .task.done::before {
+    content: ""; position: absolute; inset: 0; border-radius: 20px;
+    background: rgba(240, 69, 31, .08); border: 1.6px solid rgba(240, 69, 31, .55);
+  }
+  .task-ico {
+    width: 42px; height: 42px; border-radius: 13px; background: #F1EBE2; flex: none;
+    display: flex; align-items: center; justify-content: center; color: var(--ink); z-index: 1;
+  }
+  .task-body { flex: 1; z-index: 1; }
+  .task-body b { display: block; font-size: 15px; font-weight: 600; color: var(--ink); line-height: 1.25; }
+  .task-body small { display: block; font-size: 12px; color: #9C948A; font-weight: 500; margin-top: 2px; }
+  .check { flex: none; width: 28px; height: 28px; border-radius: 50%; border: 2px solid #E5DDD3; z-index: 1; }
+  .check.on { border: none; background: var(--flame); display: flex; align-items: center; justify-content: center; }
+
+  .tabbar {
+    position: absolute; left: 0; right: 0; bottom: 0; height: 96px;
+    background: linear-gradient(180deg, rgba(245, 241, 234, 0), var(--cream) 38%);
+    display: flex; align-items: center; justify-content: space-between; padding: 0 30px 18px;
+  }
+  .tab { display: flex; flex-direction: column; align-items: center; gap: 5px; width: 54px; }
+  .tab span { font-size: 10.5px; font-weight: 600; color: #AAA095; }
+  .tab.on span { font-weight: 700; color: var(--ink); }
+  .fab {
+    width: 60px; height: 60px; border-radius: 50%; background: var(--flame); flex: none;
+    display: flex; align-items: center; justify-content: center; margin-top: -22px;
+    box-shadow: 0 12px 24px -8px rgba(240, 69, 31, .85);
+  }
+  .home-bar {
+    position: absolute; left: 50%; transform: translateX(-50%); bottom: 9px;
+    width: 134px; height: 5px; border-radius: 3px; background: var(--ink); opacity: .85;
+  }
+
+  /* ---------------------------------------------------------- sections */
+  .section { padding: 56px 0; }
+  .section-tight { padding: 8px 0 56px; }
+
+  .steps { display: flex; flex-direction: column; gap: 14px; }
+  .step {
+    display: flex; gap: 16px; background: var(--cream);
+    border: 1px solid var(--line); border-radius: var(--radius); padding: 22px;
+  }
+  .step-n {
+    flex: none; width: 44px; height: 44px; border-radius: 14px;
+    background: linear-gradient(135deg, var(--gold), var(--flame));
+    color: #fff; font-weight: 800; font-size: 18px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .step b { font-size: 20px; font-weight: 700; }
+  .step p { margin: 7px 0 0; font-size: 18px; line-height: 1.6; font-weight: 500; color: var(--ink-soft); }
+
+  .features { display: grid; grid-template-columns: 1fr; gap: 12px; }
+  .feature { background: var(--cream); border: 1px solid var(--line); border-radius: 20px; padding: 20px; }
+  .feature-ico {
+    width: 42px; height: 42px; border-radius: 14px; background: #F1EBE2; color: var(--ink-2);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .feature b { display: block; margin-top: 14px; font-size: 18px; font-weight: 700; }
+  .feature p { margin: 6px 0 0; font-size: 16px; line-height: 1.55; font-weight: 500; color: var(--ink-soft); }
+
+  .philosophy { background: var(--ink); color: #fff; padding: 64px 0; position: relative; overflow: hidden; }
+  .philosophy::after {
+    content: ""; position: absolute; left: 50%; bottom: -140px; transform: translateX(-50%);
+    width: 280px; height: 280px; border-radius: 50%;
+    background: radial-gradient(circle at 50% 40%, #FFC24D, rgba(240, 69, 31, .25) 55%, rgba(23, 18, 14, 0) 72%);
+  }
+  .philosophy .wrap { position: relative; z-index: 1; }
+  .philosophy .mark { font-weight: 800; font-size: 48px; line-height: 1; color: var(--flame); }
+  .philosophy h2 { margin: 16px 0 0; letter-spacing: -.03em; line-height: 1.12; }
+  .philosophy p { margin: 16px 0 0; font-size: clamp(18px, 2.1vw, 20px); line-height: 1.7; font-weight: 500; color: rgba(255, 255, 255, .82); }
+
+  .quotes { display: grid; grid-template-columns: 1fr; gap: 12px; }
+  .quote { background: var(--cream); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; }
+  .quote p { margin: 0; font-size: 18px; line-height: 1.6; font-weight: 600; color: var(--ink-2); }
+  .quote figcaption { margin-top: 14px; display: flex; align-items: center; gap: 11px; }
+  .quote-av {
+    width: 38px; height: 38px; border-radius: 50%; background: #F1EBE2;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 15px; color: #6E665D;
+  }
+  .quote cite { font-style: normal; font-size: 16px; font-weight: 600; color: var(--muted); }
+
+  .faq { display: flex; flex-direction: column; gap: 10px; }
+  .faq-item { background: var(--cream); border: 1px solid var(--line); border-radius: 20px; padding: 20px 22px; }
+  .faq-item b { font-size: 19px; font-weight: 700; }
+  .faq-item p { margin: 7px 0 0; font-size: 17px; line-height: 1.6; font-weight: 500; color: var(--ink-soft); }
+
+  .cta { background: var(--flame); padding: 56px 0; }
+  .cta .wrap { display: flex; flex-direction: column; gap: 20px; align-items: flex-start; }
+  .cta h2 { margin: 0; color: #fff; letter-spacing: -.03em; line-height: 1.1; }
+
+  footer { background: var(--ink); padding: 28px 0; }
+  footer .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  footer .logo { color: var(--flame); font-size: 19px; }
+  footer .logo span { color: var(--flame); }
+  .colophon { font-size: 15px; font-weight: 600; color: rgba(255, 255, 255, .66); }
+
+  /* ---------------------------------------------------------- responsive */
+  @media (min-width: 420px) { :root { --phone-scale: .71; } }
+  @media (min-width: 560px) {
+    :root { --pad: 28px; }
+    .features { grid-template-columns: 1fr 1fr; }
+    .hero-cta { flex-direction: row; flex-wrap: wrap; }
+    .hero-cta .btn { flex: 1 1 220px; }
+  }
+  @media (min-width: 900px) {
+    :root { --pad: 40px; --phone-scale: .78; }
+    .section { padding: 88px 0; }
+    .section-tight { padding: 0 0 88px; }
+    .philosophy { padding: 96px 0; }
+    .hero-grid {
+      display: grid; grid-template-columns: 1.05fr .95fr;
+      gap: 48px; align-items: end;
+    }
+    .hero-copy { padding: 72px 0 96px; max-width: 620px; }
+    .hero-cta .btn { flex: 0 0 auto; }
+    .phone { justify-content: flex-end; align-self: end; }
+    .phone-crop { height: calc(720px * var(--phone-scale)); }
+    .features { grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .quotes { grid-template-columns: repeat(3, 1fr); }
+    .faq { display: grid; grid-template-columns: 1fr 1fr; }
+    .steps { flex-direction: row; }
+    .steps .step { flex: 1; flex-direction: column; }
+    .cta .wrap { flex-direction: row; align-items: center; justify-content: space-between; }
+    .cta h2 { max-width: 620px; }
+  }
+</style>
+</head>
+
+<body>
+
+<!-- ============================================================ hero -->
+<header class="hero">
+  <i class="star a"></i><i class="star b"></i><i class="star c"></i>
+
+  <div class="wrap">
+    <nav class="nav">
+      <span class="logo">Before Sunrise<span>*</span></span>
+      <a href="https://app.beforesunrise.id">Masuk</a>
+    </nav>
+
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <span class="hero-kicker">Habit-tracker amalan harian</span>
+        <h1>Mulai harimu sebelum matahari terbit.</h1>
+        <p class="lede">Buka, centang, tutup. Kurang dari 15 detik untuk menjaga ritme pagimu bersama komunitas.</p>
+        <div class="hero-cta">
+          <a class="btn btn-light" href="https://app.beforesunrise.id">Install ke HP</a>
+          <a class="btn btn-ghost" href="https://app.beforesunrise.id">Sudah punya akun? Masuk</a>
+        </div>
+        <div class="hero-note">Gratis · tanpa iklan · jalan di HP apa pun</div>
+      </div>
+
+      <!-- phone peeking -->
+      <div class="phone">
+        <div class="phone-crop">
+          <div class="phone-screen" role="img" aria-label="Tangkapan layar aplikasi Before Sunrise: ceklis amalan harian pagi.">
+
+            <div class="status">
+              <span class="status-time">5:12</span>
+              <div class="status-right">
+                <div class="bars"><i></i><i></i><i></i><i></i></div>
+                <svg width="16" height="12" viewBox="0 0 16 12" fill="none" aria-hidden="true"><path d="M1 4.2C4.8 1 11.2 1 15 4.2" stroke="#17120E" stroke-width="1.6" stroke-linecap="round"></path><path d="M3.5 6.8C6 4.6 10 4.6 12.5 6.8" stroke="#17120E" stroke-width="1.6" stroke-linecap="round"></path><circle cx="8" cy="10" r="1.3" fill="#17120E"></circle></svg>
+                <div class="battery"><i></i></div>
+              </div>
+            </div>
+
+            <div class="app">
+              <div class="app-head">
+                <div>
+                  <div class="app-hi">Assalamualaikum,</div>
+                  <div class="app-name">Tika</div>
+                </div>
+                <div class="avatar">T</div>
+              </div>
+
+              <div class="dow"><span>S</span><span>S</span><span>R</span><span>K</span><span>J</span><span>S</span><span>M</span></div>
+              <div class="dates">
+                <span>15</span><span>16</span><span>17</span><span>18</span><span class="on">19</span><span>20</span><span>21</span>
+              </div>
+
+              <div class="promo">
+                <div class="promo-txt">
+                  <b>Mulai harimu</b>
+                  <small>Awali dengan amalan subuh yang khusyuk &amp; tenang.</small>
+                </div>
+                <div class="promo-art">
+                  <svg viewBox="0 0 280 120" aria-hidden="true">
+                    <ellipse cx="48" cy="40" rx="20" ry="7" fill="#FFFFFF" opacity=".7"></ellipse>
+                    <ellipse cx="232" cy="30" rx="16" ry="6" fill="#FFFFFF" opacity=".6"></ellipse>
+                    <g transform="translate(140 56)">
+                      <g stroke="#F58A1E" stroke-width="3.4" stroke-linecap="round">
+                        <line x1="0" y1="-34" x2="0" y2="-44"></line><line x1="0" y1="34" x2="0" y2="44"></line>
+                        <line x1="-34" y1="0" x2="-44" y2="0"></line><line x1="34" y1="0" x2="44" y2="0"></line>
+                        <line x1="-24" y1="-24" x2="-31" y2="-31"></line><line x1="24" y1="24" x2="31" y2="31"></line>
+                        <line x1="24" y1="-24" x2="31" y2="-31"></line><line x1="-24" y1="24" x2="-31" y2="31"></line>
+                      </g>
+                      <circle r="27" fill="#FB8C1E"></circle>
+                      <circle cx="-9" cy="-3" r="2.6" fill="#3A2206"></circle><circle cx="9" cy="-3" r="2.6" fill="#3A2206"></circle>
+                      <path d="M-8 7q8 7 16 0" stroke="#3A2206" stroke-width="2.4" fill="none" stroke-linecap="round"></path>
+                      <circle cx="-15" cy="5" r="3.4" fill="#FFB36B" opacity=".7"></circle><circle cx="15" cy="5" r="3.4" fill="#FFB36B" opacity=".7"></circle>
+                    </g>
+                    <path d="M0 120V92q34-26 70-14t72-2 68-16 70 12v48z" fill="#7BA64A"></path>
+                    <path d="M0 120V104q40-18 82-6t78-4 60-14 60 10v30z" fill="#5E8F37"></path>
+                    <path d="M40 96l8-18 8 18z" fill="#4C7A2C"></path><path d="M52 100l10-22 10 22z" fill="#3F6B23"></path>
+                    <path d="M214 98l9-20 9 20z" fill="#4C7A2C"></path>
+                  </svg>
+                </div>
+              </div>
+
+              <div class="score">
+                <div class="ring">
+                  <svg width="60" height="60" viewBox="0 0 60 60" aria-hidden="true"><circle cx="30" cy="30" r="25" fill="none" stroke="#3A352E" stroke-width="7"></circle><circle cx="30" cy="30" r="25" fill="none" stroke="#F0451F" stroke-width="7" stroke-linecap="round" stroke-dasharray="157" stroke-dashoffset="39" transform="rotate(-90 30 30)"></circle></svg>
+                  <div class="ring-val">75%</div>
+                </div>
+                <div class="score-main">
+                  <b>6 dari 8 amalan</b>
+                  <small>Tinggal sedikit lagi, semangat!</small>
+                </div>
+                <div class="score-pts">
+                  <b>42</b>
+                  <small>poin</small>
+                </div>
+              </div>
+
+              <div class="group">
+                <div class="group-head">
+                  <div class="group-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 13.5A8 8 0 119.2 3.2a6.5 6.5 0 1010.8 10.3z"></path></svg></div>
+                  <b>Sholat</b>
+                  <small>2/3</small>
+                </div>
+                <div class="tasks">
+                  <div class="task done">
+                    <div class="task-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 13.5A8 8 0 119.2 3.2a6.5 6.5 0 1010.8 10.3z"></path></svg></div>
+                    <div class="task-body"><b>Subuh berjamaah</b><small>05:12 · 15 poin</small></div>
+                    <div class="check on"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" stroke="#fff" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+                  </div>
+                  <div class="task">
+                    <div class="task-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 13.5A8 8 0 119.2 3.2a6.5 6.5 0 1010.8 10.3z"></path></svg></div>
+                    <div class="task-body"><b>Qobliah subuh</b><small>2 rakaat · 10 poin</small></div>
+                    <div class="check"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="group">
+                <div class="group-head">
+                  <div class="group-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M12 6.5C10.5 5 8 4.5 4 4.8V18c4-.3 6.5.2 8 1.7M12 6.5C13.5 5 16 4.5 20 4.8V18c-4-.3-6.5.2-8 1.7M12 6.5v13"></path></svg></div>
+                  <b>Qur'an</b>
+                  <small>1/2</small>
+                </div>
+                <div class="task">
+                  <div class="task-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M12 6.5C10.5 5 8 4.5 4 4.8V18c4-.3 6.5.2 8 1.7M12 6.5C13.5 5 16 4.5 20 4.8V18c-4-.3-6.5.2-8 1.7M12 6.5v13"></path></svg></div>
+                  <div class="task-body"><b>Tilawah 1 halaman</b><small>Harian · 10 poin</small></div>
+                  <div class="check"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="tabbar">
+              <div class="tab on"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 11l8-7 8 7v8a1.5 1.5 0 01-1.5 1.5h-13A1.5 1.5 0 014 19z" stroke="#17120E" stroke-width="1.9" stroke-linejoin="round"></path></svg><span>Hari ini</span></div>
+              <div class="tab"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 19V9M9.5 19V5M15 19v-7M20.5 19v-4" stroke="#AAA095" stroke-width="2" stroke-linecap="round"></path></svg><span>Progress</span></div>
+              <div class="fab"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="#fff" stroke-width="2.8" stroke-linecap="round"></path></svg></div>
+              <div class="tab"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="5.5" width="16" height="15" rx="3" stroke="#AAA095" stroke-width="1.9"></rect><path d="M4 9.5h16M8 3v3M16 3v3" stroke="#AAA095" stroke-width="1.9" stroke-linecap="round"></path></svg><span>Jurnal</span></div>
+              <div class="tab"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="8" r="3.5" stroke="#AAA095" stroke-width="1.9"></circle><path d="M5 20c0-3.5 3-6 7-6s7 2.5 7 6" stroke="#AAA095" stroke-width="1.9" stroke-linecap="round"></path></svg><span>Profil</span></div>
+            </div>
+            <div class="home-bar"></div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============================================================ cara kerja -->
+<section class="section">
+  <div class="wrap">
+    <div class="eyebrow">Cara kerja</div>
+    <h2>Tiga langkah, satu menit.</h2>
+    <div class="steps">
+      <div class="step">
+        <span class="step-n">1</span>
+        <div><b>Install &amp; masuk</b><p>Tambahkan ke layar utama, masuk dengan Google. Tanpa toko aplikasi.</p></div>
+      </div>
+      <div class="step">
+        <span class="step-n">2</span>
+        <div><b>Centang amalan pagi</b><p>Sholat, tilawah, dzikir, sedekah, plus tugas dari admin komunitas.</p></div>
+      </div>
+      <div class="step">
+        <span class="step-n">3</span>
+        <div><b>Lihat ritmemu tumbuh</b><p>Streak, heatmap, dan poin harian tercatat rapi — hanya untuk matamu.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ fitur -->
+<section class="section-tight">
+  <div class="wrap">
+    <div class="eyebrow">Isinya</div>
+    <h2>Yang kamu butuhkan, tidak lebih.</h2>
+    <div class="features">
+      <div class="feature">
+        <span class="feature-ico"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"></path></svg></span>
+        <b>Ceklis harian</b><p>Amalan &amp; tugas komunitas dalam satu layar.</p>
+      </div>
+      <div class="feature">
+        <span class="feature-ico"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 8v5l3 2"></path><path d="M4 12a8 8 0 102-5.3M4 4v2.7H6.7"></path></svg></span>
+        <b>Isi mundur 3 hari</b><p>Kelupaan masih bisa dicatat.</p>
+      </div>
+      <div class="feature">
+        <span class="feature-ico"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></span>
+        <b>Amalan sendiri</b><p>Tambah di luar template, tetap masuk heatmap.</p>
+      </div>
+      <div class="feature">
+        <span class="feature-ico"><svg width="21" height="21" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 20s-7-4.3-7-9.3A4 4 0 0112 7.5 4 4 0 0119 10.7c0 5-7 9.3-7 9.3z"></path></svg></span>
+        <b>Mode haid</b><p>Diganti amalan lain, streak tetap aman.</p>
+      </div>
+      <div class="feature">
+        <span class="feature-ico"><svg width="21" height="21" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13 2c.5 4-2.5 5-2.5 8a2.5 2.5 0 005 0c0-1 .8 1.5.8 3a6 6 0 11-9.4-4.9C9 9 9.5 5 13 2z"></path></svg></span>
+        <b>Streak &amp; heatmap</b><p>Lihat pola pagimu sepanjang bulan.</p>
+      </div>
+      <div class="feature">
+        <span class="feature-ico"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"></path><circle cx="12" cy="12" r="3"></circle></svg></span>
+        <b>Tanpa sinyal</b><p>Centang dulu, sinkron belakangan.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ filosofi -->
+<section class="philosophy">
+  <div class="wrap narrow">
+    <span class="mark">*</span>
+    <h2>Bukan ajang lomba.</h2>
+    <p>Tidak ada papan peringkat di sini. Poinmu hanya untuk kamu — pengingat lembut, bukan tekanan. Konsistensi kecil setiap pagi lebih berharga daripada usaha besar sesekali.</p>
+  </div>
+</section>
+
+<!-- ============================================================ testimoni -->
+<section class="section">
+  <div class="wrap">
+    <h2>Kata anggota</h2>
+    <div class="quotes">
+      <figure class="quote">
+        <p>"Dulu subuh sering kelewat. Sekarang saya bangun karena pengin nyentang."</p>
+        <figcaption><span class="quote-av">R</span><cite>Rahmat, 47</cite></figcaption>
+      </figure>
+      <figure class="quote">
+        <p>"Ceklisnya cepat, hurufnya besar. Ibu saya juga bisa pakai sendiri."</p>
+        <figcaption><span class="quote-av">D</span><cite>Dewi, 41</cite></figcaption>
+      </figure>
+      <figure class="quote">
+        <p>"Yang saya suka justru yang tidak ada: ranking. Jadi tenang."</p>
+        <figcaption><span class="quote-av">F</span><cite>Fadli, 52</cite></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ faq -->
+<section class="section-tight">
+  <div class="wrap">
+    <h2>Pertanyaan yang sering muncul</h2>
+    <div class="faq">
+      <div class="faq-item"><b>Apakah gratis?</b><p>Ya. Dibuat untuk komunitas, bukan untuk dijual.</p></div>
+      <div class="faq-item"><b>Perlu install dari Play Store?</b><p>Tidak. Buka di browser, lalu pilih "Tambahkan ke layar utama".</p></div>
+      <div class="faq-item"><b>Siapa yang bisa melihat amalan saya?</b><p>Amalan personal hanya untukmu. Admin melihat angka gabungan komunitas.</p></div>
+      <div class="faq-item"><b>Kalau lupa mencentang?</b><p>Bisa diisi mundur, maksimal tiga hari ke belakang.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ cta -->
+<section class="cta" id="install">
+  <div class="wrap">
+    <h2>Besok pagi, mulai dari satu centang.</h2>
+    <a class="btn btn-light" href="https://app.beforesunrise.id">Install ke HP</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span class="logo">Before Sunrise<span>*</span></span>
+    <span class="colophon">beforesunrise.id · 2026</span>
+  </div>
+</footer>
+
+</body>
+</html>

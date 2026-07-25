@@ -11,6 +11,12 @@ Imported from the Claude Design project *Before Sunrise\* App* — variant **1b 
 Copy tracks the design file. When 1b changes upstream, re-read it and re-apply —
 the section order, palette, and phone mockup have been stable; the copy is what moves.
 
+**One deliberate deviation:** the six feature-card icons. The design kept the old
+app-feature icons (check, clock, plus, heart, flame, eye) after the copy was
+rewritten for the community, so they no longer matched. They are now users,
+chat bubble, open book, shield+heart, bar chart, and map pin — same 24×24 grid
+and 1.9 stroke as the rest of the set. Re-syncing 1b should not undo this.
+
 ## Files
 
 - `index.html` — the whole page. No build step, no JS, one external request (Google Fonts).
